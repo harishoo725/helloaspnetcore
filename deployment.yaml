@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloaspnetcore-deployment
+spec:
+  selector:
+    matchLabels:
+      app: helloaspnetcore-pod
+  template:
+    metadata:
+      labels:
+        app: helloaspnetcore-pod
+    spec:
+      containers:
+      - name: helloaspnetcore-container
+        image: harishoo7/helloaspnetcore
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
